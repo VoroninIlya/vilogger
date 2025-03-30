@@ -1,0 +1,90 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "default-aarch64-host-lin",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "toolchainFile": "${sourceDir}/cmake/host-lin/gnu-aarch64-none-linux-gcc.cmake",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+        "UNITY_ROOT_PATH": "../unity",
+        "UNITY_EXTENSION_FIXTURE": "ON",
+        "UNITY_EXTENSION_MEMORY": "ON",
+        "GTEST_ROOT_PATH": "../gtest"
+      },
+      "environment": {
+        "AARCH64_LINUX_GNU_SYSROOT": "/opt/gcc-arm-10.2/aarch64-none-linux-gnu/libc",
+        "UMASK": "002"
+      }
+    },
+    {
+      "name": "Debug-aarch64-host-lin",
+      "inherits": "default-aarch64-host-lin",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "RelWithDebInfo-aarch64-host-lin",
+      "inherits": "default-aarch64-host-lin",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "Release-aarch64-host-lin",
+      "inherits": "default-aarch64-host-lin",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "default-linux-host-lin",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "toolchainFile": "${sourceDir}/cmake/host-lin/gcc.cmake",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "UNITY_ROOT_PATH": "../unity",
+        "UNITY_EXTENSION_FIXTURE": "ON",
+        "UNITY_EXTENSION_MEMORY": "ON",
+        "GTEST_ROOT_PATH": "../gtest"
+      },
+      "environment": {
+          "UMASK": "002"
+      }
+    },
+    {
+      "name": "Debug-linux-host-lin",
+      "inherits": "default-linux-host-lin",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "RelWithDebInfo-linux-host-lin",
+      "inherits": "default-linux-host-lin",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "Release-linux-host-lin",
+      "inherits": "default-linux-host-lin",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "tst_viwebapi-debug-linux-host-lin",
+      "description": "",
+      "displayName": "",
+      "configurePreset": "Debug-linux-host-lin"
+    }
+  ]
+}
